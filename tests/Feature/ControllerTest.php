@@ -11,7 +11,7 @@ class ControllerTest extends TestCase
 
     public function testController()
     {
-        $this->get('/controller/hello')
-            ->assertSeeText('hello world');
+        $this->get('/controller/hello/Irfan')
+            ->assertSeeText('halo Irfan');
     }
 }

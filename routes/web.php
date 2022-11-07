@@ -61,4 +61,4 @@ Route::get('/conflict/{nama}', function($nama){
     return "nama ".$nama;
 });
 
-Route::get('/controller/hello', [HelloController::class, 'hello']);
+Route::get('/controller/hello/{name}', [HelloController::class]);
