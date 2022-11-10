@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HelloController;
+use App\Http\Controllers\InputController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,4 +63,12 @@ Route::get('/conflict/{nama}', function($nama){
     return "nama ".$nama;
 });
 
+Route::get('/controller/hello/request', [HelloController::class, 'request']);
+
 Route::get('/controller/hello/{name}', [HelloController::class]);
+
+Route::get('/input/hello', [InputController::class, 'hello']);
+
+Route::post('/input/hello', [InputController::class, 'hello']);
+
+Route::post('/input/hello/first', [InputController::class, 'helloNested']);
