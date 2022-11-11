@@ -72,3 +72,5 @@ Route::get('/input/hello', [InputController::class, 'hello']);
 Route::post('/input/hello', [InputController::class, 'hello']);
 
 Route::post('/input/hello/first', [InputController::class, 'helloNested']);
+
+Route::post('/input/hello/input', [InputController::class, 'helloInput']);

@@ -40,4 +40,14 @@ class ControllerTest extends TestCase
                 'last' => 'Machmud'
             ]])->assertSeeText("halo Irfan");
     }
+
+    public function testInput2()
+    {
+        $this->post('input/hello/input', [
+            "name" => [
+            "first" => "Irfan",
+            "last" => "Machmud"
+            ]
+        ])->assertSeeText("name")->assertSeeText("first")->assertSeeText("Irfan")->assertSeeText("last")->assertSeeText("Machmud");
+    }
 }
