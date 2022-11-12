@@ -17,10 +17,20 @@ class InputController extends Controller
         $firstname = $request->input('name.first');
         return "halo $firstname";
     }
-
+    public function helloNested2(Request $request): string
+    {
+        $firstname = $request->input('name.last');
+        return "halo $firstname";
+    }
     public function helloInput(Request $request): string
     {
         $input = $request->input();
         return json_encode($input);
+    }
+
+    public function helloArray(Request $request): string
+    {
+        $names = $request->input("orang.*.name");
+        return json_encode($names);
     }
 }

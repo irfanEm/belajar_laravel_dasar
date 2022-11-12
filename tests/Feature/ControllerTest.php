@@ -50,4 +50,24 @@ class ControllerTest extends TestCase
             ]
         ])->assertSeeText("name")->assertSeeText("first")->assertSeeText("Irfan")->assertSeeText("last")->assertSeeText("Machmud");
     }
+
+    public function testArray()
+    {
+        $this->post('input/hello/array', [
+            'orang' => [
+                [
+                    'name' => 'Irfan Machmud',
+                    'age' => '25 tahun'
+                ],
+                [
+                    'name' => 'Balqis Farah Anabila',
+                    'age' => '2 tahun'
+                ],
+                [
+                    'name' => 'Shilvia Qurota Ayun',
+                    'age' => '20 tahun'
+                ]
+            ]
+            ])->assertSeeText("Irfan Machmud")->assertSeeText("Balqis Farah Anabila")->assertSeeText("Shilvia Qurota Ayun");
+    }
 }
