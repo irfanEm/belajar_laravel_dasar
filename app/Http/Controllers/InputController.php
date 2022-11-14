@@ -33,4 +33,17 @@ class InputController extends Controller
         $names = $request->input("orang.*.name");
         return json_encode($names);
     }
+
+    public function inputType(Request $request): string
+    {
+        $name = $request->input("name");
+        $menikah = $request->boolean("menikah");
+        $tanggalLahir = $request->date("tanggal_lahir", "Y-m-d");
+
+        return json_encode([
+            "nama" => $name,
+            "status" => $menikah,
+            "tanggal Lahir" => $tanggalLahir->format("Y-m-d")
+        ]);
+    }
 }

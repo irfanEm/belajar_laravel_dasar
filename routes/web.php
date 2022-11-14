@@ -78,3 +78,5 @@ Route::post('/input/hello/last', [InputController::class, 'helloNested2']);
 Route::post('/input/hello/input', [InputController::class, 'helloInput']);
 
 Route::post('/input/hello/array', [InputController::class, 'helloArray']);
+
+Route::post('/input/type', [InputController::class, 'inputType']);

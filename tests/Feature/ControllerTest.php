@@ -70,4 +70,14 @@ class ControllerTest extends TestCase
             ]
             ])->assertSeeText("Irfan Machmud")->assertSeeText("Balqis Farah Anabila")->assertSeeText("Shilvia Qurota Ayun");
     }
+
+    public function testInputType()
+    {
+        $this->post('input/type',[
+            "name" => "Irfan Machmud",
+            "menikah" => "true",
+            "tanggal_lahir" => "1997-11-27"
+        ])->assertSeeText("Irfan Machmud")->assertSeeText("true")->assertSeeText("1997-11-27");
+    }
 }
+
