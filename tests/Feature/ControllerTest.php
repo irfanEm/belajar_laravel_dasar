@@ -79,5 +79,34 @@ class ControllerTest extends TestCase
             "tanggal_lahir" => "1997-11-27"
         ])->assertSeeText("Irfan Machmud")->assertSeeText("true")->assertSeeText("1997-11-27");
     }
+
+    public function testInputFilterOnly()
+    {
+        $this->post('input/filter/only', [
+            "name" => [
+                "first" => "Balqis",
+                "midle" => "Farah",
+                "last" => "Anabila"
+            ]
+        ])->assertSeeText("Balqis")->assertSeeText("Anabila")->assertDontSeeText("Farah");
+    }
+
+    public function testFilterInputExcept()
+    {
+        $this->post('input/filter/except',[
+            "username" => "Irfan Machmud",
+            "admin" => "true",
+            "password" => "rahasia"
+        ])->assertSeeText("Irfan Machmud")->assertSeeText("rahasia")->assertDontSeeText("admin");
+    }
+
+    public function testFilterInputMerge()
+    {
+        $this->post('input/filter/merge',[
+            "username" => "Irfan Machmud",
+            "admin" => "true",
+            "password" => "rahasia"
+        ])->assertSeeText("Irfan Machmud")->assertSeeText("admin")->assertSeeText("false")->assertSeeText("rahasia");
+    }
 }
 

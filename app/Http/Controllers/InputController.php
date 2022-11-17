@@ -46,4 +46,25 @@ class InputController extends Controller
             "tanggal Lahir" => $tanggalLahir->format("Y-m-d")
         ]);
     }
+
+    public function inputFilterOnly(Request $request)
+    {
+        $name = $request->only("name.first", "name.last");
+        return json_encode($name);
+    }
+
+    public function inputFilterExcept(Request $request)
+    {
+        $user = $request->except("admin");
+        return json_encode($user);
+    }
+
+    public function inputFilterMerge(Request $request)
+    {
+        $request->merge([
+            "admin" => "false"
+        ]);
+        $user = $request->input();
+        return json_encode($user);
+    }
 }
