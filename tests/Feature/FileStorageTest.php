@@ -19,4 +19,16 @@ class FileStorageTest extends TestCase
 
         self::assertEquals("Balqis Farah Anabila", $content);
     }
+
+
+    public function testFilePublic()
+    {
+        $filesystem = Storage::disk("public");
+
+        $filesystem -> put ("file.txt", "Balqis Farah Anabila");
+
+        $content = $filesystem -> get("file.txt");
+
+        self::assertEquals("Balqis Farah Anabila", $content);
+    }
 }
