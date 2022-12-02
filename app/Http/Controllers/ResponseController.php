@@ -12,7 +12,7 @@ class ResponseController extends Controller
         return response("Halo Response");
     }
 
-    public function Response2(Request $request): Response
+    public function header(Request $request): Response
     {
         $body = [
             'nama_awal' => 'Irfan',

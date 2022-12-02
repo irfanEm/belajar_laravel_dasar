@@ -92,3 +92,5 @@ Route::post('/input/filter/merge', [InputController::class, 'inputFilterMerge'])
 Route::post('/file/upload', [FileController::class, 'upload']);
 
 Route::get('/response/halo',[ResponseController::class, 'response']);
+
+Route::get('/response/header', [ResponseController::class, 'header']);
