@@ -94,3 +94,11 @@ Route::post('/file/upload', [FileController::class, 'upload']);
 Route::get('/response/halo',[ResponseController::class, 'response']);
 
 Route::get('/response/header', [ResponseController::class, 'header']);
+
+Route::get('/response/view', [ResponseController::class, 'responseView']);
+
+Route::get('/response/json', [ResponseController::class, 'jsonResponse']);
+
+Route::get('/response/file', [ResponseController::class, 'fileResponse']);
+
+Route::get('/response/download', [ResponseController::class, 'fileDownloadResponse']);

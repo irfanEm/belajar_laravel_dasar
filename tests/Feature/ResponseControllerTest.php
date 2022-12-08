@@ -24,4 +24,30 @@ class ResponseControllerTest extends TestCase
             ->assertHeader('author', 'Irfan em')
             ->assertHeader('App', 'cuma belajar');
     }
+
+    public function testresponseview()
+    {
+        $this->get('/response/view')
+            ->assertSeeText('halo Irfan');
+    }
+
+        public function testresponseJson()
+    {
+        $this->get('/response/json')
+            ->assertJson(['nama_awal' => 'Irfan', 'nama_akhir'=> 'Machmud']);
+    }
+
+    public function testresponseFile()
+    {
+        $this->get('/response/file')
+            ->assertHeader('Content-Type', 'image/png');
+    }
+
+    public function testresponseDownload()
+    {
+        $this->get('/response/download')
+            ->assertDownload('irfan.png');
+    }
+
+
 }
