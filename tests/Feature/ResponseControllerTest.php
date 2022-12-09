@@ -31,7 +31,7 @@ class ResponseControllerTest extends TestCase
             ->assertSeeText('halo Irfan');
     }
 
-        public function testresponseJson()
+    public function testresponseJson()
     {
         $this->get('/response/json')
             ->assertJson(['nama_awal' => 'Irfan', 'nama_akhir'=> 'Machmud']);
