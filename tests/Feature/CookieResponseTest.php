@@ -15,4 +15,17 @@ class CookieResponseTest extends TestCase
             ->assertCookie("Nama", "Irfan")
             ->assertCookie("Isuser", "true");
     }
+
+    public function testGetCookie()
+    {
+        $this->withCookie('Nama', 'Irfan')
+            ->withCookie('Isuser', 'true')
+            ->get('/cookie/get')
+            ->assertJson([
+                'Nama' => 'Irfan',
+                'Isuser' => 'true',
+            ]);
+    }
 }
+
+
