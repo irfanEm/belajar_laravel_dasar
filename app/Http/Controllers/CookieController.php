@@ -19,9 +19,16 @@ class CookieController extends Controller
     {
         return Response()
             ->json([
-                'Nama' => $request->cookie('Nama'),
-                'Isuser' => $request->cookie('Isuser')
+                'Nama' => $request->cookie('Nama', 'Tamu'),
+                'Isuser' => $request->cookie('Isuser','false')
             ]);
+    }
+
+    public function clearCookie(Request $request): Response
+    {
+        return response('Clear Cookie')
+            ->withoutCookie('Nama')
+            ->withoutCookie('Isuser');
     }
 
 }

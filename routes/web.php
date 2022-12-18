@@ -103,3 +103,4 @@ Route::get('/response/download', [ResponseController::class, 'fileDownloadRespon
 
 Route::get('/cookie/set', [CookieController::class, 'Cookieset']);
 Route::get('/cookie/get', [CookieController::class, 'getCookie']);
+Route::get('/cookie/clear', [CookieController::class, 'clearCookie']);
