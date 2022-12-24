@@ -5,6 +5,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\CookieController;
+use App\Http\Controllers\redirectController;
 use App\Http\Controllers\ResponseController;
 
 /*
@@ -104,3 +105,10 @@ Route::get('/response/download', [ResponseController::class, 'fileDownloadRespon
 Route::get('/cookie/set', [CookieController::class, 'Cookieset']);
 Route::get('/cookie/get', [CookieController::class, 'getCookie']);
 Route::get('/cookie/clear', [CookieController::class, 'clearCookie']);
+
+Route::get('/redirect/from', [redirectController::class, 'redirectFrom']);
+Route::get('/redirect/to', [redirectController::class, 'redirectTo']);
+Route::get('/redirect/nama', [redirectController::class, 'redirectNama']);
+Route::get('/redirect/nama/{name}', [redirectController::class, 'redirectHalo'])->name('redirectHalo');
+Route::get('/redirect/action', [redirectController::class, 'redirectAction']);
+Route::get('/redirect/away', [redirectController::class, 'redirectDomain']);
