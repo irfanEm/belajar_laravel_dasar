@@ -5,8 +5,11 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\CookieController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\redirectController;
 use App\Http\Controllers\ResponseController;
+use App\Http\Middleware\ContohMiddleware;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -91,11 +94,18 @@ Route::post('/input/filter/except', [InputController::class, 'inputFilterExcept'
 
 Route::post('/input/filter/merge', [InputController::class, 'inputFilterMerge']);
 
-Route::post('/file/upload', [FileController::class, 'upload']);
+Route::post('/file/upload', [FileController::class, 'upload'])->withoutMiddleware('VerifyCsrfToken::class');
 
 Route::get('/response/halo',[ResponseController::class, 'response']);
 
 Route::get('/response/header', [ResponseController::class, 'header']);
+
+Route::prefix('/response')->group(function () {
+    Route::get('/view', [ResponseController::class, 'responseView']);
+    Route::get('/json', [ResponseController::class, 'jsonResponse']);
+    Route::get('/file', [ResponseController::class, 'fileResponse']);
+    Route::get('/download', [ResponseController::class, 'fileDownloadResponse']);
+});
 
 Route::get('/response/view', [ResponseController::class, 'responseView']);
 Route::get('/response/json', [ResponseController::class, 'jsonResponse']);
@@ -112,3 +122,14 @@ Route::get('/redirect/nama', [redirectController::class, 'redirectNama']);
 Route::get('/redirect/nama/{name}', [redirectController::class, 'redirectHalo'])->name('redirectHalo');
 Route::get('/redirect/action', [redirectController::class, 'redirectAction']);
 Route::get('/redirect/away', [redirectController::class, 'redirectDomain']);
+
+Route::get('/middleware/api', function () {
+    return "ok";
+})->middleware(['contoh:Irfan,401']);
+
+Route::get('/middleware/grup', function () {
+    return "grup";
+})->middleware(['contohgrup']);
+
+Route::get('/form', [FormController::class, 'form']);
+Route::post('/form', [FormController::class, 'formAction']);
